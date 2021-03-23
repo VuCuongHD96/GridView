@@ -812,7 +812,7 @@ private extension GridView {
             let count = columnCount()
             
             var size: CGSize = .zero
-            var columnHorizontals: [Horizontal] = []
+            let columnHorizontals: [Horizontal] = []
             var columnRowVerticals: [[Vertical?]] = []
             
             (0..<count).forEach { column in
@@ -849,8 +849,8 @@ private extension GridView {
                 size.width = lastItem.maxX
             }
             
-            let count = columnCount()
-            var columnHorizontals: [Horizontal] = []
+            let count = columnCountPerPage()
+            let columnHorizontals: [Horizontal] = []
             var columnRowVerticals: [[Vertical?]] = []
             
             (0..<count).forEach { column in
