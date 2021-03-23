@@ -282,6 +282,7 @@ struct ViewMatrix: Countable {
 extension ViewMatrix {
     mutating func appendVerticals(horizontals: [Horizontal]?, verticals: [[Vertical?]], viewFrame: CGRect, contentHeight: CGFloat, superviewSize: CGSize?, scale: Scale) {
         
+        print("ContentSize before calculator = ", self.contentSize)
         var contentSize: CGSize = .zero
         contentSize.width = (horizontals?.last?.maxX ?? viewFrame.width * CGFloat(verticals.endIndex)) * scale.x
         if contentHeight == 0 {
@@ -290,12 +291,19 @@ extension ViewMatrix {
             contentSize.height = contentHeight * scale.y
         }
 
+        print("Before append Vertical = ", self.verticals.count)
         self.verticals += verticals
+        print("After append Vertical = ", self.verticals.count)
+        
+        contentSize.width = CGFloat(self.verticals.count * 112)
+        print("ContentSize after calculator = ", contentSize)
+        
         self.viewFrame = viewFrame
         self.visibleSize = superviewSize
         self.contentHeight = contentHeight
         
         self.aroundInset = .zero
+//        contentSize.width = CGFloat(112) * CGFloat(self.verticals.count)
         self.validityContentRect = CGRect(origin: .zero, size: contentSize)
         self.contentSize = contentSize
     }
