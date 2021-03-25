@@ -228,7 +228,8 @@ struct ViewMatrix: Countable {
             return columns
         }
         
-        let visibleRect = CGRect(origin: CGPoint(x: point.x - aroundInset.left.width, y: 0), size: visibleSize)
+        let visibleRect = CGRect(origin: CGPoint(x: point.x - aroundInset.left.width, y: 0),
+                                 size: visibleSize)
         let index = column(at: visibleRect.origin)
         
         var frame = CGRect(origin: .zero, size: viewFrame.size)
